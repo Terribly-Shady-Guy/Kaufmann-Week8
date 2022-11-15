@@ -67,6 +67,6 @@ class ClientApi {
 
   Future removeStudentFromClasses(int studentID) async {
     final response = await _dio
-        .delete('/removestudentfromclasses', data: {'studentID': studentID});
+        .delete('/removeStudentFromClasses', data: {'studentID': studentID});
   }
 }
