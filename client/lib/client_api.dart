@@ -3,7 +3,7 @@ import './models/course.dart';
 import './models/student.dart';
 
 class ClientApi {
-  static const String _apiUrl = "http://localhost:1200";
+  static const String _apiUrl = "http://localhost:1200/";
   final _dio = Dio(BaseOptions(baseUrl: _apiUrl));
 
   Future<List> getAllStudents() async {
