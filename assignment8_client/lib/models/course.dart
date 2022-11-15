@@ -1,18 +1,20 @@
 class Course {
+  final String id;
   final String courseInstructor;
   final int courseCredits;
   final String courseID;
   final String courseName;
 
-  Course(this.courseInstructor, this.courseCredits, this.courseID,
+  Course._(this.id, this.courseInstructor, this.courseCredits, this.courseID,
       this.courseName);
 
   factory Course.fromJson(Map json) {
+    final id = json[''].replaceAll('ObjectId(\"', '').replaceAll('\")', '');
     final courseInstructor = json['courseInstructor'];
     final courseCredits = json['courseCredits'];
     final courseID = json['courseID'];
     final courseName = json['courseName'];
 
-    return Course(courseInstructor, courseCredits, courseID, courseName);
+    return Course._(id, courseInstructor, courseCredits, courseID, courseName);
   }
 }

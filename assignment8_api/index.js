@@ -54,7 +54,7 @@ app.get(`/findStudent`, async (req, res) => {
         let student = await Student.findOne({studentID: req.body.studentID})
 
         if (student) {
-            return res.status(200).json(student);
+            return res.status(200).json({"student": student});
             
         } 
         else {
@@ -71,7 +71,7 @@ app.get(`/findCourse`, async (req, res) => {
         let course = await Course.find({courseInstructor: req.body.courseInstructor})
 
         if (course) {
-            return res.status(200).json(course);
+            return res.status(200).json({"course": course});
             
         } 
         else {
