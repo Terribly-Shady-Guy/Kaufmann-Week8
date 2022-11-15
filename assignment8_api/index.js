@@ -32,7 +32,7 @@ app.listen(PORT, () => console.log(`server started on http://localhost:${PORT}`)
 app.get(`/getAllCourses`, async (req, res) => {
     try{
         let courses = await Course.find({}).lean()
-        return res.status(200).json(courses);
+        return res.status(200).json({"courses": courses});
     }
     catch{
         return res.status(500);
@@ -42,7 +42,7 @@ app.get(`/getAllCourses`, async (req, res) => {
 app.get(`/getAllStudents`, async (req, res) => {
     try{
         let students = await Student.find({}).lean()
-        return res.status(200).json(students);
+        return res.status(200).json({"students": students});
     }
     catch{
         return res.status(500);
@@ -116,7 +116,7 @@ app.post(`/addStudent`, async (req, res) => {
     }
 });
 
-app.post("/editStudentById", async (req, res) => {
+app.put("/editStudentById", async (req, res) => {
     try {
         let student = await Student.updateOne({_id: req.body.id}, {
             fname: req.body.fname
@@ -134,7 +134,7 @@ app.post("/editStudentById", async (req, res) => {
     }
 });
 
-app.post("/editStudentByFname", async (req, res) => {
+app.put("/editStudentByFname", async (req, res) => {
     try {
         let student = await Student.updateOne({fname: req.body.queryFname}, {
             fname: req.body.fname, 
@@ -153,7 +153,7 @@ app.post("/editStudentByFname", async (req, res) => {
     }
 });
 
-app.post("/editCourseByCourseName", async (req, res) => {
+app.put("/editCourseByCourseName", async (req, res) => {
     try {
         let course = await Course.updateOne({courseName: req.body.courseName}, {
             courseInstructor: req.body.courseInstructor
@@ -171,7 +171,7 @@ app.post("/editCourseByCourseName", async (req, res) => {
     }
 });
 
-app.post("/deleteCourseById", async (req, res) => {
+app.delete("/deleteCourseById", async (req, res) => {
     try {
         let course = await Course.findOne({_id: req.body.id});
 
@@ -188,7 +188,7 @@ app.post("/deleteCourseById", async (req, res) => {
     }
 });
 
-app.post("/removeStudentFromClasses", async (req, res) => {
+app.delete("/removeStudentFromClasses", async (req, res) => {
     try {
         let student = await Student.findOne({studentID: req.body.studentID});
 
