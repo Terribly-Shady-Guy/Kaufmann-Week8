@@ -55,7 +55,7 @@ class ClientApi {
         data: {'queryFname': queryFname, 'fname': fname, 'lname': lname});
   }
 
-  Future editCourseByCoursename(
+  Future editCourseByCourseName(
       String courseName, String courseInstructor) async {
     final response = await _dio.put('/editcoursebycoursename',
         data: {'courseName': courseName, 'courseInstructor': courseInstructor});
