@@ -7,24 +7,24 @@ class ClientApi {
   final _dio = Dio(BaseOptions(baseUrl: _apiUrl));
 
   Future<List> getAllStudents() async {
-    final response = await _dio.get('/getallstudents');
+    final response = await _dio.get('/getAllStudents');
     return response.data['students'];
   }
 
   Future<List> getAllCourses() async {
-    final response = await _dio.get("/getallcourses");
+    final response = await _dio.get("/getAllCourses");
     return response.data['courses'];
   }
 
   Future findStudent(String id) async {
     final response =
-        await _dio.get('/findstudent', queryParameters: {'id': id});
+        await _dio.get('/findStudent', queryParameters: {'id': id});
 
     return response.data['student'];
   }
 
   Future<List> findCourse(String courseInstructor) async {
-    final response = await _dio.get('/findcourse',
+    final response = await _dio.get('/findCourse',
         queryParameters: {'courseInstructor': courseInstructor});
 
     return response.data['course'];
@@ -32,7 +32,7 @@ class ClientApi {
 
   Future addCourse(
       String instructor, int credits, String courseID, String name) async {
-    await _dio.post('addcourse', data: {
+    await _dio.post('addCourse', data: {
       'courseInstructor': instructor,
       'courseCredits': credits,
       'courseID': courseID,
@@ -41,28 +41,28 @@ class ClientApi {
   }
 
   Future addStudent(String fname, String lname, int studentID) async {
-    await _dio.post('/addstudent',
+    await _dio.post('/addStudent',
         data: {'fname': fname, 'lname': lname, 'studentID': studentID});
   }
 
   Future editStudentById(String id) async {
-    final response = await _dio.put('/editstudentbyid', data: {'id': id});
+    final response = await _dio.put('/editStudentById', data: {'id': id});
   }
 
   Future editStudentByFname(
       String queryFname, String fname, String lname) async {
-    final response = await _dio.put('/editstudentbyfname',
+    final response = await _dio.put('/editStudentByFname',
         data: {'queryFname': queryFname, 'fname': fname, 'lname': lname});
   }
 
   Future editCourseByCourseName(
       String courseName, String courseInstructor) async {
-    final response = await _dio.put('/editcoursebycoursename',
+    final response = await _dio.put('/editCourseByCourseName',
         data: {'courseName': courseName, 'courseInstructor': courseInstructor});
   }
 
   Future deleteCourseById(String id) async {
-    final response = await _dio.delete('/deletecoursebyid', data: {'id': id});
+    final response = await _dio.delete('/deleteCourseById', data: {'id': id});
   }
 
   Future removeStudentFromClasses(int studentID) async {
