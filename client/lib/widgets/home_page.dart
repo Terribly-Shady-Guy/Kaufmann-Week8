@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../client_api.dart';
+import 'new_course_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -60,7 +61,21 @@ class _HomePageState extends State<HomePage> {
                                   child: Text(course['courseInstructor']),
                                 )
                               ],
-                            ))
+                            )),
+                        Row(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              NewCoursePage())));
+                                },
+                                child: const Text("Add New Course"))
+                          ],
+                        )
                       ],
                     ))
                   ],

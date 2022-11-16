@@ -33,7 +33,7 @@ class ClientApi {
 
   Future addCourse(
       String instructor, int credits, String courseID, String name) async {
-    await _dio.post('addCourse', data: {
+    await _dio.post('/addCourse', data: {
       'courseInstructor': instructor,
       'courseCredits': credits,
       'courseID': courseID,
