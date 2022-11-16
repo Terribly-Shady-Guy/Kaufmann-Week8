@@ -5,7 +5,7 @@ import '../client_api.dart';
 class StudentFnamePage extends StatefulWidget {
   StudentFnamePage({super.key, required this.id});
   final String id;
-  ClientApi api = ClientApi();
+  final ClientApi api = ClientApi();
 
   @override
   State<StudentFnamePage> createState() => _StudentFnamePageState();
