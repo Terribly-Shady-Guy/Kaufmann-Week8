@@ -3,10 +3,11 @@ import 'home_page.dart';
 import '../client_api.dart';
 
 class StudentsPage extends StatefulWidget {
-  StudentsPage({super.key, required this.courseName});
+  StudentsPage({super.key, required this.courseName, required this.id});
 
   final String courseName;
   final ClientApi api = ClientApi();
+  final String id;
 
   @override
   State<StudentsPage> createState() => _StudentsPageState();
@@ -31,7 +32,7 @@ class _StudentsPageState extends State<StudentsPage> {
   void _toHomePage() {
     Navigator.pop(context);
     Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => HomePage())));
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   @override
@@ -43,6 +44,13 @@ class _StudentsPageState extends State<StudentsPage> {
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          widget.api
+                              .deleteCourseById(widget.id)
+                              .then((value) => _toHomePage());
+                        },
+                        child: const Text("Delete course")),
                     Expanded(
                         child: ListView(
                       children: <Widget>[

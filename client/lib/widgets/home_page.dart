@@ -72,8 +72,9 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: ((context) => StudentsPage(
-                                            courseName:
-                                                course["courseName"]))));
+                                              courseName: course["courseName"],
+                                              id: course['_id'],
+                                            ))));
                               },
                             )),
                         Row(
