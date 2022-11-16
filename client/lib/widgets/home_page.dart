@@ -20,10 +20,10 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     widget.api.getAllCourses().then((courses) {
-      setState() {
+      setState((() {
         _courses = courses;
         _isDataAvailable = true;
-      }
+      }));
     });
   }
 

@@ -7,7 +7,6 @@ const nodemon = require("nodemon");
 
 const mongoose = require("mongoose");
 
-// const connectionString = "mongodb+srv://admin:db1212@group4a4db.d6cdj1h.mongodb.net/?retryWrites=true&w=majority";
 const connectionString = "mongodb+srv://admin:db1212@kaufmannweek12.niqst3i.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
