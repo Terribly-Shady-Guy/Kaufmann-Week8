@@ -37,7 +37,34 @@ class _HomePageState extends State<HomePage> {
           child: _isDataAvailable
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[const Text("Test")],
+                  children: <Widget>[
+                    Expanded(
+                        child: ListView(
+                      children: <Widget>[
+                        ..._courses.map((course) => Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(course['courseID']),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(course['courseName']),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child:
+                                      Text(course['courseCredits'].toString()),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(course['courseInstructor']),
+                                )
+                              ],
+                            ))
+                      ],
+                    ))
+                  ],
                 )
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
