@@ -44,13 +44,16 @@ class _StudentsPageState extends State<StudentsPage> {
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          widget.api
-                              .deleteCourseById(widget.id)
-                              .then((value) => _toHomePage());
-                        },
-                        child: const Text("Delete course")),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            widget.api
+                                .deleteCourseById(widget.id)
+                                .then((value) => _toHomePage());
+                          },
+                          child: const Text("Delete course")),
+                    ),
                     Expanded(
                         child: ListView(
                       children: <Widget>[
