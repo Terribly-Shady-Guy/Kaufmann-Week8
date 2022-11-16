@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Demo Home Page'),
+        title: const Text('Courses'),
       ),
       body: Center(
           child: _isDataAvailable
@@ -42,57 +42,59 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Expanded(
-                        child: ListView(
-                      children: <Widget>[
-                        ..._courses.map((course) => TextButton(
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(course['courseID']),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(course['courseName']),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                        course['courseCredits'].toString()),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(course['courseInstructor']),
-                                  )
-                                ],
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => StudentsPage(
-                                              courseName: course["courseName"],
-                                              id: course['_id'],
-                                            )));
-                              },
-                            )),
-                        Row(
-                          children: [
-                            ElevatedButton(
+                      child: ListView(
+                        children: <Widget>[
+                          ..._courses.map((course) => TextButton(
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(course['courseID']),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(course['courseName']),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                          course['courseCredits'].toString()),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(course['courseInstructor']),
+                                    )
+                                  ],
+                                ),
                                 onPressed: () {
                                   Navigator.pop(context);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              NewCoursePage()));
+                                          builder: (context) => StudentsPage(
+                                                courseName:
+                                                    course["courseName"],
+                                                id: course['_id'],
+                                              )));
                                 },
-                                child: const Text("Add New Course"))
-                          ],
-                        )
-                      ],
-                    ))
+                              )),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  NewCoursePage()));
+                                    },
+                                    child: const Text("Add New Course")),
+                              ])
+                        ],
+                      ),
+                    )
                   ],
                 )
               : Column(

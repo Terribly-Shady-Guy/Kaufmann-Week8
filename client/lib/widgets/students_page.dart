@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+import './student_fname_page.dart';
 import '../client_api.dart';
 
 class StudentsPage extends StatefulWidget {
@@ -70,7 +71,18 @@ class _StudentsPageState extends State<StudentsPage> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(student['lname']),
-                                )
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: ((context) =>
+                                                  StudentFnamePage(
+                                                      id: student['_id']))));
+                                    },
+                                    child: const Text("Change First Name"))
                               ],
                             ))
                       ],

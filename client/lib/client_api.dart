@@ -46,8 +46,9 @@ class ClientApi {
         data: {'fname': fname, 'lname': lname, 'studentID': studentID});
   }
 
-  Future editStudentById(String id) async {
-    final response = await _dio.put('/editStudentById', data: {'id': id});
+  Future editStudentById(String id, String fname) async {
+    final response =
+        await _dio.put('/editStudentById', data: {'id': id, 'fname': fname});
   }
 
   Future editStudentByFname(
