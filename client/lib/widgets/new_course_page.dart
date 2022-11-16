@@ -30,12 +30,12 @@ class _NewCoursePageState extends State<NewCoursePage> {
         _isCreditsInvalid = false;
         widget.api.addCourse(instructorController.text, credits,
             courseIdController.text, courseNameController.text);
-        toHomePage();
+        _toHomePage();
       });
     }
   }
 
-  void toHomePage() {
+  void _toHomePage() {
     Navigator.pop(context);
     Navigator.push(
         context, MaterialPageRoute(builder: ((context) => HomePage())));
@@ -71,7 +71,7 @@ class _NewCoursePageState extends State<NewCoursePage> {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: toHomePage,
+        onPressed: _toHomePage,
         child: const Icon(Icons.home),
       ),
     );

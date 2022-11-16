@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../client_api.dart';
 import 'new_course_page.dart';
+import 'students_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -43,26 +44,37 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                         child: ListView(
                       children: <Widget>[
-                        ..._courses.map((course) => Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(course['courseID']),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(course['courseName']),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child:
-                                      Text(course['courseCredits'].toString()),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(course['courseInstructor']),
-                                )
-                              ],
+                        ..._courses.map((course) => TextButton(
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(course['courseID']),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(course['courseName']),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        course['courseCredits'].toString()),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(course['courseInstructor']),
+                                  )
+                                ],
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) => StudentsPage(
+                                            courseName:
+                                                course["courseName"]))));
+                              },
                             )),
                         Row(
                           children: [
