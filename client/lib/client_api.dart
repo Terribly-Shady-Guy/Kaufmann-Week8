@@ -3,6 +3,7 @@ import './models/course.dart';
 import './models/student.dart';
 
 class ClientApi {
+  //used this as using http://localhost:1200 would cause a socketexception in android emulator
   static const String _apiUrl = "http://10.0.2.2:1200";
   final _dio = Dio(BaseOptions(baseUrl: _apiUrl));
 
