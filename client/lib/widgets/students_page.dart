@@ -59,6 +59,7 @@ class _StudentsPageState extends State<StudentsPage> {
                         child: ListView(
                       children: <Widget>[
                         ..._students.map((student) => Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),

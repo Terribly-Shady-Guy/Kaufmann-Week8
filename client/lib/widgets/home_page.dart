@@ -46,6 +46,8 @@ class _HomePageState extends State<HomePage> {
                         children: <Widget>[
                           ..._courses.map((course) => TextButton(
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
