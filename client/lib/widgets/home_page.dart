@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     widget.api.getAllCourses().then((courses) {
+      courses.sort((a, b) => a['courseName'].compareTo(b['courseName']));
+
       setState((() {
         _courses = courses;
         _isDataAvailable = true;
