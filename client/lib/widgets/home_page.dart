@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import '../client_api.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key, required this.title});
+  HomePage({super.key});
 
-  final String title;
   final ClientApi api = ClientApi();
 
   @override
@@ -31,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Flutter Demo Home Page'),
       ),
       body: Center(
           child: _isDataAvailable
