@@ -39,7 +39,7 @@ class _NewCoursePageState extends State<NewCoursePage> {
   void _toHomePage() {
     Navigator.pop(context);
     Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => HomePage())));
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   @override

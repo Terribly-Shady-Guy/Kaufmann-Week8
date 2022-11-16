@@ -71,10 +71,10 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: ((context) => StudentsPage(
+                                        builder: (context) => StudentsPage(
                                               courseName: course["courseName"],
                                               id: course['_id'],
-                                            ))));
+                                            )));
                               },
                             )),
                         Row(
@@ -85,8 +85,8 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: ((context) =>
-                                              NewCoursePage())));
+                                          builder: (context) =>
+                                              NewCoursePage()));
                                 },
                                 child: const Text("Add New Course"))
                           ],
