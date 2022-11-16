@@ -28,9 +28,10 @@ class _NewCoursePageState extends State<NewCoursePage> {
     } else {
       setState(() {
         _isCreditsInvalid = false;
-        widget.api.addCourse(instructorController.text, credits,
-            courseIdController.text, courseNameController.text);
-        _toHomePage();
+        widget.api
+            .addCourse(instructorController.text, credits,
+                courseIdController.text, courseNameController.text)
+            .then((value) => _toHomePage());
       });
     }
   }
