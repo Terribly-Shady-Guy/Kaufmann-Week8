@@ -25,7 +25,7 @@ class _StudentFnamePageState extends State<StudentFnamePage> {
   void _toHome() {
     Navigator.pop(context);
     Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => HomePage())));
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   @override
