@@ -12,14 +12,14 @@ class NewCoursePage extends StatefulWidget {
 }
 
 class _NewCoursePageState extends State<NewCoursePage> {
-  final TextEditingController courseIdController = TextEditingController();
-  final TextEditingController courseNameController = TextEditingController();
-  final TextEditingController creditsController = TextEditingController();
-  final TextEditingController instructorController = TextEditingController();
+  final TextEditingController _courseIdController = TextEditingController();
+  final TextEditingController _courseNameController = TextEditingController();
+  final TextEditingController _creditsController = TextEditingController();
+  final TextEditingController _instructorController = TextEditingController();
   bool _isCreditsInvalid = false;
 
-  void addCourse() {
-    int? credits = int.tryParse(creditsController.text);
+  void _addCourse() {
+    int? credits = int.tryParse(_creditsController.text);
 
     if (credits == null) {
       setState(() {
@@ -29,8 +29,8 @@ class _NewCoursePageState extends State<NewCoursePage> {
       setState(() {
         _isCreditsInvalid = false;
         widget.api
-            .addCourse(instructorController.text, credits,
-                courseIdController.text, courseNameController.text)
+            .addCourse(_instructorController.text, credits,
+                _courseIdController.text, _courseNameController.text)
             .then((value) => _toHomePage());
       });
     }
@@ -57,18 +57,18 @@ class _NewCoursePageState extends State<NewCoursePage> {
           ),
           const Text("course ID:"),
           TextFormField(
-            controller: courseIdController,
+            controller: _courseIdController,
           ),
           const Text("Course name:"),
-          TextFormField(controller: courseNameController),
+          TextFormField(controller: _courseNameController),
           const Text("credits"),
           TextFormField(
-            controller: creditsController,
+            controller: _creditsController,
             keyboardType: TextInputType.number,
           ),
           const Text("Instructor name:"),
-          TextFormField(controller: instructorController),
-          ElevatedButton(onPressed: addCourse, child: const Text("Add"))
+          TextFormField(controller: _instructorController),
+          ElevatedButton(onPressed: _addCourse, child: const Text("Add"))
         ]),
       ),
       floatingActionButton: FloatingActionButton(
