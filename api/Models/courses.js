@@ -5,19 +5,19 @@ const schema = mongoose.Schema
 const Course = new schema({
     courseInstructor: {
         type: String,
-        require: true
+        required: true
     },
     courseCredits: {
         type: Number,
-        require: true
+        required: true
     },
     courseID: {
         type: String,
-        require: true
+        required: true
     },
     courseName: {
         type: String,
-        require: true
+        required: true
     },
     dateEntered: {
         type: Date,

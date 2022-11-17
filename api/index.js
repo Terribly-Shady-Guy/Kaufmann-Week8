@@ -6,6 +6,7 @@ app.use(express.json());
 const nodemon = require("nodemon");
 
 const mongoose = require("mongoose");
+const e = require("express");
 
 const connectionString = "mongodb+srv://admin:db1212@kaufmannweek12.niqst3i.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(connectionString, {
@@ -29,44 +30,44 @@ const Course = mongoose.model("Course");
 app.listen(PORT, () => console.log(`server started on http://localhost:${PORT}`));
 
 app.get(`/getAllCourses`, async (req, res) => {
-    try{
+    try {
         let courses = await Course.find({}).lean()
         return res.status(200).json({"courses": courses});
     }
-    catch{
-        return res.status(500);
+    catch (e){
+        return res.status(500).json({message: "Could not get all courses", reason: e.message});
     }
 });
 
 app.get(`/getAllStudents`, async (req, res) => {
-    try{
+    try {
         let students = await Student.find({}).lean()
         return res.status(200).json({"students": students});
     }
-    catch{
-        return res.status(500);
+    catch (e) {
+        return res.status(500).json({message: "Could not get all students", reason: e.message});
     }
 });
 
 app.get(`/findStudent`, async (req, res) => {
-    try{
+    try {
         let student = await Student.findOne({studentID: req.body.studentID})
 
         if (student) {
-            return res.status(200).json({"student": student});
+            return res.status(200).json({student: student});
             
         } 
         else {
-            return res.status(200).json("Student not Found...")            
+            return res.status(200).json({message: "Student not Found..."})            
         }
     }
-    catch{
-        return res.status(500).json("Connection ERROR...")
+    catch (e) {
+        return res.status(500).json({message: "Connection ERROR...", reason: e.message})
     }
 });
 
 app.get(`/findCourse`, async (req, res) => {
-    try{
+    try {
         let course = await Course.find({courseInstructor: req.body.courseInstructor})
 
         if (course) {
@@ -74,11 +75,11 @@ app.get(`/findCourse`, async (req, res) => {
             
         } 
         else {
-            return res.status(200).json("Course not Found...")            
+            return res.status(200).json({message: "Course not Found..."})            
         }
     }
-    catch{
-        return res.status(500).json("Connection ERROR...")
+    catch (e) {
+        return res.status(500).json({message: "Connection ERROR...", reason: e.message})
     }
 });
 
@@ -92,10 +93,10 @@ app.post(`/addCourse`, async (req, res) => {
         }
 
         await Course(course).save();
-        return res.status(200).json("Course Added...");
+        return res.status(200).json({message: "Course Added..."});
     }
-    catch{
-        return res.status(500);
+    catch (e) {
+        return res.status(500).json({message: "Failed to add course", reason: e.message});
     }
 });
 
@@ -108,10 +109,10 @@ app.post(`/addStudent`, async (req, res) => {
         }
 
         await Student(student).save();
-        return res.status(200).json("Student Added...");
+        return res.status(200).json({message: "Student Added..."});
     }
-    catch{
-        return res.status(500);
+    catch (e){
+        return res.status(500).json({message: "Failed to add student", reason: e.message});
     }
 });
 
@@ -122,14 +123,14 @@ app.put("/editStudentById", async (req, res) => {
         });
 
         if (student) {
-            return res.status(200).send("Student first name updated");
+            return res.status(200).json({message: "Student first name updated"});
         }
         else {
-            return res.status(200).send("No change on student data");
+            return res.status(200).json({message: "No change on student data"});
         }
     }
-    catch {
-        return res.status(500).send("failed to edit student");
+    catch (e) {
+        return res.status(500).json({message: "failed to edit student", reason: e.message});
     }
 });
 
@@ -141,14 +142,14 @@ app.put("/editStudentByFname", async (req, res) => {
         });
         
         if (student) {
-            return res.status(200).send("student name updated");
+            return res.status(200).json({message: "student name updated"});
         }
         else {
-            return res.status(200).send("student name was not updated");
+            return res.status(200).json({message: "student name was not updated"});
         }
     }
-    catch {
-        return res.status(500).send("failed to edit student");
+    catch (e) {
+        return res.status(500).json({message: "failed to edit student", reason: e.message});
     }
 });
 
@@ -159,14 +160,14 @@ app.put("/editCourseByCourseName", async (req, res) => {
         });
 
         if (course) {
-            return res.status(200).send("course instructor updated");
+            return res.status(200).json({message: "course instructor updated"});
         }
         else {
-            return res.status(200).send("course instructor not updated");
+            return res.status(200).json({message: "course instructor not updated"});
         }
     }
-    catch {
-        return res.status(500).send("failed to edit course");
+    catch (e) {
+        return res.status(500).json({message: "failed to edit course", reason: e.message});
     }
 });
 
@@ -176,14 +177,14 @@ app.delete("/deleteCourseById", async (req, res) => {
 
         if (course) {
             await Course.deleteOne({_id: req.body.id});
-            return res.status(200).send("course deleted");
+            return res.status(200).json({message: "course deleted"});
         }
         else {
-            return res.status(200).send("course does not exist");
+            return res.status(200).json({message: "course does not exist"});
         }
     }
-    catch {
-        return res.status(500).send("failed to delete course");
+    catch (e) {
+        return res.status(500).json({message: "failed to delete course", reason: e.message});
     }
 });
 
@@ -193,13 +194,13 @@ app.delete("/removeStudentFromClasses", async (req, res) => {
 
         if (student) {
             await Student.deleteOne({studentID: req.body.studentID});
-            return res.status(200).send("student deleted");
+            return res.status(200).json({message: "student deleted"});
         }
         else {
-            return res.status(200).send("student id does not exist");
+            return res.status(200).json({message: "student id does not exist"});
         }
     }
-    catch {
-        return res.status(500).send("failed to remove student");
+    catch (e) {
+        return res.status(500).json({message: "failed to remove student", reason: e.message});
     }
 });
