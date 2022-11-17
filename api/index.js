@@ -96,7 +96,10 @@ app.post(`/addCourse`, async (req, res) => {
         return res.status(200).json({message: "Course Added..."});
     }
     catch (e) {
-        return res.status(500).json({message: "Failed to add course", reason: e.message});
+        if (e.name == "ValidationError") {
+            return res.status(400).json({message: "Failed to add course", reason: e.message});
+        }
+        return res.status(500).json({message: "Something went wrong", reason: e.message});
     }
 });
 
@@ -112,7 +115,10 @@ app.post(`/addStudent`, async (req, res) => {
         return res.status(200).json({message: "Student Added..."});
     }
     catch (e){
-        return res.status(500).json({message: "Failed to add student", reason: e.message});
+        if (e.name == "ValidationError") {
+            return res.status(400).json({message: "Failed to add student", reason: e.message});
+        }
+        return res.status(500).json({message: "Something went wrong", reason: e.message});
     }
 });
 
