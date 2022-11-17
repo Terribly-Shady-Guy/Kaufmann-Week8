@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import './student_fname_page.dart';
 import '../client_api.dart';
+import './data_load_indicator.dart';
 
 class StudentsPage extends StatefulWidget {
   StudentsPage({super.key, required this.courseName, required this.id});
@@ -90,13 +91,7 @@ class _StudentsPageState extends State<StudentsPage> {
                     ))
                   ],
                 )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Text("Data Loading. Please Wait..."),
-                    CircularProgressIndicator()
-                  ],
-                )),
+              : const DataLoadingIndicator()),
       floatingActionButton: FloatingActionButton(
         onPressed: _toHomePage,
         child: const Icon(Icons.home),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../client_api.dart';
 import 'new_course_page.dart';
 import 'students_page.dart';
+import './data_load_indicator.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -99,16 +100,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Text(
-                      "Loading data. Please wait...",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    CircularProgressIndicator()
-                  ],
-                )),
+              : const DataLoadingIndicator()),
     );
   }
 }
