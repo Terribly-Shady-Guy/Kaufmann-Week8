@@ -45,8 +45,8 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ListView(
                         children: <Widget>[
-                          ..._courses.map(
-                              (course) => _InteractiveDataRow(course: course)),
+                          ..._courses.map((course) =>
+                              _InteractiveCourseRow(course: course)),
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
@@ -71,8 +71,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class _InteractiveDataRow extends StatelessWidget {
-  const _InteractiveDataRow({super.key, required this.course});
+class _InteractiveCourseRow extends StatelessWidget {
+  const _InteractiveCourseRow({super.key, required this.course});
 
   final dynamic course;
 
