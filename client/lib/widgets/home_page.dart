@@ -45,6 +45,31 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ListView(
                         children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const <Widget>[
+                              Text(
+                                "Course ID",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              Text(
+                                "Course Name",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              Text(
+                                "Credits",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              Text(
+                                "Instructor",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                            ],
+                          ),
                           ..._courses.map((course) =>
                               _InteractiveCourseRow(course: course)),
                           Row(
