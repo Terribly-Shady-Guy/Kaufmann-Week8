@@ -45,31 +45,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ListView(
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const <Widget>[
-                              Text(
-                                "Course ID",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
-                              Text(
-                                "Course Name",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
-                              Text(
-                                "Credits",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
-                              Text(
-                                "Instructor",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
-                            ],
-                          ),
+                          const _CourseHeaderRow(),
                           ..._courses.map((course) =>
                               _InteractiveCourseRow(course: course)),
                           Row(
@@ -135,6 +111,35 @@ class _InteractiveCourseRow extends StatelessWidget {
                       id: course['_id'],
                     )));
       },
+    );
+  }
+}
+
+class _CourseHeaderRow extends StatelessWidget {
+  const _CourseHeaderRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: const <Widget>[
+        Text(
+          "Course ID",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+        Text(
+          "Course Name",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+        Text(
+          "Credits",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+        Text(
+          "Instructor",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+      ],
     );
   }
 }
