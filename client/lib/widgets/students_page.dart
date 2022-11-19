@@ -3,6 +3,7 @@ import 'home_page.dart';
 import './student_fname_page.dart';
 import '../client_api.dart';
 import './data_load_indicator.dart';
+import './new_student_page.dart';
 
 class StudentsPage extends StatefulWidget {
   StudentsPage({super.key, required this.courseName, required this.id});
@@ -46,15 +47,32 @@ class _StudentsPageState extends State<StudentsPage> {
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            widget.api
-                                .deleteCourseById(widget.id)
-                                .then((value) => _toHomePage());
-                          },
-                          child: const Text("Delete course")),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                widget.api
+                                    .deleteCourseById(widget.id)
+                                    .then((value) => _toHomePage());
+                              },
+                              child: const Text("Delete course")),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            NewStudentPage()));
+                              },
+                              child: const Text("Add Student")),
+                        )
+                      ],
                     ),
                     Expanded(
                         child: ListView(
