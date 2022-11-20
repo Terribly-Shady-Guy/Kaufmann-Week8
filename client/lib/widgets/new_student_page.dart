@@ -52,11 +52,14 @@ class _NewStudentPageState extends State<NewStudentPage> {
       body: Center(
           child: Column(
         children: <Widget>[
-          Visibility(
-            visible: _isStudentIDInvalid,
-            child: const Text(
-              "Student ID must be an int",
-              style: TextStyle(color: Colors.red),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Visibility(
+              visible: _isStudentIDInvalid,
+              child: const Text(
+                "Student ID must be an int",
+                style: TextStyle(color: Colors.red),
+              ),
             ),
           ),
           const Text("Student ID:"),
