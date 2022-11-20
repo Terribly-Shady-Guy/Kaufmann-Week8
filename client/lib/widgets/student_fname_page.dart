@@ -47,6 +47,8 @@ class _StudentFnamePageState extends State<StudentFnamePage> {
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: _toHome,
+        backgroundColor: Colors.orange,
+        foregroundColor: Colors.cyan,
         child: const Icon(Icons.home),
       ),
     );

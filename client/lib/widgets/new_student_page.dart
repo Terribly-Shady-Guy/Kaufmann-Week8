@@ -76,9 +76,10 @@ class _NewStudentPageState extends State<NewStudentPage> {
         ],
       )),
       floatingActionButton: FloatingActionButton(
-        onPressed: _toHome,
-        child: const Icon(Icons.home),
-      ),
+          onPressed: _toHome,
+          backgroundColor: Colors.orange,
+          foregroundColor: Colors.cyan,
+          child: const Icon(Icons.home)),
     );
   }
 }

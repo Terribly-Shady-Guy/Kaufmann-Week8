@@ -117,6 +117,8 @@ class _StudentsPageState extends State<StudentsPage> {
         padding: const EdgeInsets.only(top: 60),
         child: FloatingActionButton(
           onPressed: _toHomePage,
+          backgroundColor: Colors.orange,
+          foregroundColor: Colors.cyan,
           child: const Icon(Icons.home),
         ),
       ),
