@@ -51,14 +51,11 @@ class _NewCoursePageState extends State<NewCoursePage> {
       ),
       body: Center(
         child: Column(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Visibility(
-              visible: _isCreditsInvalid,
-              child: const Text(
-                "credits must be an int",
-                style: TextStyle(color: Colors.red),
-              ),
+          Visibility(
+            visible: _isCreditsInvalid,
+            child: const Text(
+              "credits must be an int",
+              style: TextStyle(color: Colors.red),
             ),
           ),
           const Text("course ID:"),
