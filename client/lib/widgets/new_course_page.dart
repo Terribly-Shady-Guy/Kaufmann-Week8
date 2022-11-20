@@ -45,7 +45,10 @@ class _NewCoursePageState extends State<NewCoursePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Add new course")),
+      appBar: AppBar(
+        title: const Text("Add new course"),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(children: <Widget>[
           Visibility(

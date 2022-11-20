@@ -33,6 +33,7 @@ class _StudentFnamePageState extends State<StudentFnamePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Change student first name"),
+        centerTitle: true,
       ),
       body: Center(
           child: Column(

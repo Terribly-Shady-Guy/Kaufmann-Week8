@@ -41,7 +41,10 @@ class _StudentsPageState extends State<StudentsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.courseName)),
+      appBar: AppBar(
+        title: Text(widget.courseName),
+        centerTitle: true,
+      ),
       body: Center(
           child: _isDataAvailable
               ? Column(

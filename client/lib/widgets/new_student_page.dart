@@ -47,6 +47,7 @@ class _NewStudentPageState extends State<NewStudentPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add new student"),
+        centerTitle: true,
       ),
       body: Center(
           child: Column(
