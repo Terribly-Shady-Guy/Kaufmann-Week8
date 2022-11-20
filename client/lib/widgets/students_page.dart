@@ -113,10 +113,14 @@ class _StudentsPageState extends State<StudentsPage> {
                   ],
                 )
               : const DataLoadingIndicator()),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toHomePage,
-        child: const Icon(Icons.home),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 60),
+        child: FloatingActionButton(
+          onPressed: _toHomePage,
+          child: const Icon(Icons.home),
+        ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
   }
 }
