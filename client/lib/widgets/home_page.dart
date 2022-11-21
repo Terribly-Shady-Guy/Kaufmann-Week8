@@ -24,10 +24,10 @@ class _HomePageState extends State<HomePage> {
     widget.api.getAllCourses().then((courses) {
       courses.sort((a, b) => a['courseName'].compareTo(b['courseName']));
 
-      setState((() {
+      setState(() {
         _courses = courses;
         _isDataAvailable = true;
-      }));
+      });
     });
   }
 
