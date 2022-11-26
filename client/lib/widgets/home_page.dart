@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../client_api.dart';
-import 'new_course_page.dart';
-import 'students_page.dart';
-import './data_load_indicator.dart';
+import './new_course_page.dart';
+import './students_page.dart';
+import './data_loading_indicator.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});

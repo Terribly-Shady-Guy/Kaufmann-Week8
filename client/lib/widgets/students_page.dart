@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import './home_page.dart';
 import './student_fname_page.dart';
 import '../client_api.dart';
-import './data_load_indicator.dart';
+import './data_loading_indicator.dart';
 import './new_student_page.dart';
 
 class StudentsPage extends StatefulWidget {
